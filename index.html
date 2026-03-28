@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprendiendo el Autismo | Neurodiversidad</title>
+    <style>
+        /* Estilos generales */
+        :root {
+            --primary-color: #2b6cb0; /* Azul calmante */
+            --secondary-color: #ebf8ff;
+            --text-color: #2d3748;
+            --bg-color: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+        }
+
+        /* Cabecera (Hero Section) */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navegación */
+        nav {
+            background-color: #2a4365;
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #90cdf4;
+        }
+
+        /* Secciones principales */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            background-color: var(--secondary-color);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Grid para características y mitos */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #2a4365;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Comprendiendo el Autismo</h1>
+        <p>Celebrando la neurodiversidad y promoviendo un mundo más inclusivo y empático para todos.</p>
+    </header>
+
+    <nav>
+        <a href="#que-es">¿Qué es?</a>
+        <a href="#caracteristicas">Características</a>
+        <a href="#mitos">Mitos y Realidades</a>
+        <a href="#apoyo">Apoyo</a>
+    </nav>
+
+    <div class="container">
+        <section id="que-es">
+            <h2>¿Qué es el Espectro Autista?</h2>
+            <p>El autismo, o Trastorno del Espectro Autista (TEA), es una condición neurológica y de desarrollo que comienza en la niñez y dura toda la vida. Afecta cómo una persona se comporta, interactúa con otros, se comunica y aprende.</p>
+            <p>Se llama "espectro" porque las personas autistas pueden tener una amplia variedad de síntomas y habilidades. Algunas personas autistas pueden necesitar mucha ayuda en su vida diaria, mientras que otras necesitan menos apoyo y viven de forma independiente. Lo más importante es entender el autismo desde la <strong>neurodiversidad</strong>: no es una enfermedad que deba "curarse", sino una forma diferente en la que funciona el cerebro.</p>
+        </section>
+
+        <section id="caracteristicas">
+            <h2>Características Comunes</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Comunicación e Interacción</h3>
+                    <p>Pueden tener formas únicas de comunicarse. Algunos son muy verbales, otros pueden no hablar o usar dispositivos de comunicación. Pueden evitar el contacto visual o interpretar el lenguaje de manera muy literal.</p>
+                </div>
+                <div class="card">
+                    <h3>Patrones de Comportamiento</h3>
+                    <p>Es común que prefieran rutinas estructuradas y puedan sentirse abrumados por los cambios inesperados. Pueden tener intereses muy profundos y específicos en ciertos temas.</p>
+                </div>
+                <div class="card">
+                    <h3>Sensibilidad Sensorial</h3>
+                    <p>Muchas personas en el espectro experimentan el mundo de manera diferente. Pueden ser hipersensibles (o hiposensibles) a ruidos, luces, texturas o sabores.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="mitos">
+            <h2>Mitos vs. Realidades</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>Mito: Las vacunas causan autismo.</h3>
+                    <p><strong>Realidad:</strong> Falso. Múltiples estudios científicos rigurosos a nivel mundial han demostrado que no existe absolutamente ninguna relación entre las vacunas y el autismo.</p>
+                </div>
+                <div class="card">
+                    <h3>Mito: Las personas autistas no tienen empatía.</h3>
+                    <p><strong>Realidad:</strong> Las personas autistas sienten mucha empatía, a menudo incluso más de lo normal. Simplemente pueden expresarla o procesarla de una manera diferente a las personas neurotípicas.</p>
+                </div>
+                <div class="card">
+                    <h3>Mito: Todos los autistas tienen talentos de "genio".</h3>
+                    <p><strong>Realidad:</strong> Aunque algunos tienen habilidades excepcionales (síndrome del sabio), la mayoría tiene fortalezas y debilidades variadas, exactamente igual que el resto de la población.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="apoyo">
+            <h2>Recursos y Apoyo</h2>
+            <p>El diagnóstico temprano y las terapias adaptadas (como terapia ocupacional o de lenguaje) pueden ser de gran ayuda. Es vital escuchar a los adultos autistas para entender realmente sus necesidades.</p>
+            <p>Si buscas más información, te recomendamos acercarte a asociaciones locales de tu país o leer recursos de organizaciones lideradas por personas autistas (como ASAN).</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>Este sitio web tiene fines informativos y de concienciación.</p>
+        <p>&copy; 2026 - Promoviendo la Neurodiversidad</p>
+    </footer>
+
+</body>
+</html>
