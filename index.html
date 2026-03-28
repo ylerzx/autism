@@ -1,189 +1,466 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprendiendo el Autismo | Neurodiversidad</title> 
-    <style>
-        /* Estilos generales */
-        :root {
-            --primary-color: #2b6cb0; /* Azul calmante */
-            --secondary-color: #ebf8ff;
-            --text-color: #2d3748;
-            --bg-color: #ffffff;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Comprendiendo el Autismo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #f7f5f2;
+      --grad-start: #f4a07a;
+      --grad-mid: #c9a4d4;
+      --grad-end: #8ab4e8;
+      --muted: #888;
+    }
 
-        /* Cabecera (Hero Section) */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 4rem 2rem;
-        }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
 
-        header p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      border-bottom: 1px solid #e0ddd8;
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 100;
+    }
 
-        /* Navegación */
-        nav {
-            background-color: #2a4365;
-            display: flex;
-            justify-content: center;
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-        }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo svg { display: block; }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
 
-        nav a:hover {
-            color: #90cdf4;
-        }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
 
-        /* Secciones principales */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    .nav-links a:hover { color: var(--black); }
 
-        section {
-            margin-bottom: 3rem;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            background-color: var(--secondary-color);
-        }
+    /* HERO */
+    .hero-band {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(120deg, var(--grad-start), var(--grad-mid), var(--grad-end));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
 
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
+    .hero-bg-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 12vw, 9rem);
+      color: rgba(255,255,255,0.15);
+      letter-spacing: 0.05em;
+      user-select: none;
+      position: absolute;
+    }
 
-        /* Grid para características y mitos */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
+    .hero-text {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+    }
 
-        .card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 5px solid var(--primary-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+    .hero-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #fff;
+      letter-spacing: 0.06em;
+    }
 
-        .card h3 {
-            margin-top: 0;
-            color: #2a4365;
-        }
+    .hero-text p {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+    }
 
-        /* Pie de página */
-        footer {
-            background-color: var(--text-color);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
+    /* SECTIONS */
+    .section {
+      padding: 5rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
 
-    </style>
+    .section.visible { opacity: 1; transform: translateY(0); }
+
+    .section-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-body {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #333;
+      max-width: 700px;
+    }
+
+    .section-body p + p { margin-top: 1rem; }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, var(--grad-start), var(--grad-end));
+      opacity: 0.35;
+      margin: 0 3rem;
+    }
+
+    /* CALLOUT */
+    .callout {
+      margin-top: 2rem;
+      border-left: 3px solid;
+      border-image: linear-gradient(180deg, var(--grad-start), var(--grad-end)) 1;
+      padding: 1rem 1.5rem;
+      background: #f0ede8;
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: #333;
+      max-width: 680px;
+    }
+
+    .callout strong { font-weight: 500; color: var(--black); }
+
+    /* CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5px;
+      background: #e0ddd8;
+      border: 1.5px solid #e0ddd8;
+      margin-top: 2.5rem;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 2.2rem 2rem;
+      transition: background 0.25s;
+    }
+
+    .card:hover { background: #f0ede8; }
+
+    .card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: #555;
+    }
+
+    /* MITOS */
+    .mitos-list {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mito-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid #e0ddd8;
+    }
+
+    .mito-item:first-child { border-top: 1px solid #e0ddd8; }
+
+    .mito-col {
+      padding: 1.8rem 2rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .mito-col:first-child {
+      border-right: 1px solid #e0ddd8;
+      color: var(--muted);
+    }
+
+    .mito-col:last-child { color: #222; }
+
+    .mito-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.18rem 0.55rem;
+      border-radius: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .tag-mito { background: #f4d0c8; color: #a03020; }
+    .tag-real { background: #c8dff4; color: #1a4a7a; }
+
+    /* APOYO BOX */
+    .apoyo-box {
+      margin-top: 2.5rem;
+      padding: 2.5rem 2.8rem;
+      background: var(--black);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .apoyo-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(244,160,122,0.25), rgba(138,180,232,0.2));
+      pointer-events: none;
+    }
+
+    .apoyo-box h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .apoyo-box p {
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.75);
+      max-width: 580px;
+      position: relative;
+    }
+
+    .btn-apoyo {
+      display: inline-block;
+      margin-top: 1.6rem;
+      background: var(--white);
+      color: var(--black);
+      padding: 0.65rem 1.8rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s;
+      position: relative;
+    }
+
+    .btn-apoyo:hover { opacity: 0.8; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #e0ddd8;
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 680px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .section { padding: 3rem 1.5rem; }
+      .mito-item { grid-template-columns: 1fr; }
+      .mito-col:first-child { border-right: none; border-bottom: 1px solid #e0ddd8; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Comprendiendo el Autismo</h1>
-        <p>Celebrando la neurodiversidad y promoviendo un mundo más inclusivo y empático para todos.</p>
-    </header>
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo" aria-label="Inicio">
+      <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="puzGrad" x1="0" y1="0" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#f4a07a"/>
+            <stop offset="50%" stop-color="#c9a4d4"/>
+            <stop offset="100%" stop-color="#8ab4e8"/>
+          </linearGradient>
+        </defs>
+        <path d="M8 8 h8 c0-4 6-4 6 0 h8 v8 c4 0 4 6 0 6 v8 h-8 c0 4-6 4-6 0 h-8 v-8 c-4 0-4-6 0-6 Z" fill="url(#puzGrad)"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#que-es">¿Qué es?</a></li>
+      <li><a href="#caracteristicas">Características</a></li>
+      <li><a href="#mitos">Mitos y Realidades</a></li>
+      <li><a href="#apoyo">Apoyo</a></li>
+    </ul>
+  </nav>
 
-    <nav>
-        <a href="#que-es">¿Qué es?</a>
-        <a href="#caracteristicas">Características</a>
-        <a href="#mitos">Mitos y Realidades</a>
-        <a href="#apoyo">Apoyo</a>
-    </nav>
-
-    <div class="container">
-        <section id="que-es">
-            <h2>¿Qué es el Espectro Autista?</h2>
-            <p>El autismo, o Trastorno del Espectro Autista (TEA), es una condición neurológica y de desarrollo que comienza en la niñez y dura toda la vida. Afecta cómo una persona se comporta, interactúa con otros, se comunica y aprende.</p>
-            <p>Se llama "espectro" porque las personas autistas pueden tener una amplia variedad de síntomas y habilidades. Algunas personas autistas pueden necesitar mucha ayuda en su vida diaria, mientras que otras necesitan menos apoyo y viven de forma independiente. Lo más importante es entender el autismo desde la <strong>neurodiversidad</strong>: no es una enfermedad que deba "curarse", sino una forma diferente en la que funciona el cerebro.</p>
-        </section>
-
-        <section id="caracteristicas">
-            <h2>Características Comunes</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <h3>Comunicación e Interacción</h3>
-                    <p>Pueden tener formas únicas de comunicarse. Algunos son muy verbales, otros pueden no hablar o usar dispositivos de comunicación. Pueden evitar el contacto visual o interpretar el lenguaje de manera muy literal.</p>
-                </div>
-                <div class="card">
-                    <h3>Patrones de Comportamiento</h3>
-                    <p>Es común que prefieran rutinas estructuradas y puedan sentirse abrumados por los cambios inesperados. Pueden tener intereses muy profundos y específicos en ciertos temas.</p>
-                </div>
-                <div class="card">
-                    <h3>Sensibilidad Sensorial</h3>
-                    <p>Muchas personas en el espectro experimentan el mundo de manera diferente. Pueden ser hipersensibles (o hiposensibles) a ruidos, luces, texturas o sabores.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="mitos">
-            <h2>Mitos vs. Realidades</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <h3>Mito: Las vacunas causan autismo.</h3>
-                    <p><strong>Realidad:</strong> Falso. Múltiples estudios científicos rigurosos a nivel mundial han demostrado que no existe absolutamente ninguna relación entre las vacunas y el autismo.</p>
-                </div>
-                <div class="card">
-                    <h3>Mito: Las personas autistas no tienen empatía.</h3>
-                    <p><strong>Realidad:</strong> Las personas autistas sienten mucha empatía, a menudo incluso más de lo normal. Simplemente pueden expresarla o procesarla de una manera diferente a las personas neurotípicas.</p>
-                </div>
-                <div class="card">
-                    <h3>Mito: Todos los autistas tienen talentos de "genio".</h3>
-                    <p><strong>Realidad:</strong> Aunque algunos tienen habilidades excepcionales (síndrome del sabio), la mayoría tiene fortalezas y debilidades variadas, exactamente igual que el resto de la población.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="apoyo">
-            <h2>Recursos y Apoyo</h2>
-            <p>El diagnóstico temprano y las terapias adaptadas (como terapia ocupacional o de lenguaje) pueden ser de gran ayuda. Es vital escuchar a los adultos autistas para entender realmente sus necesidades.</p>
-            <p>Si buscas más información, te recomendamos acercarte a asociaciones locales de tu país o leer recursos de organizaciones lideradas por personas autistas (como ASAN).</p>
-        </section>
+  <!-- HERO -->
+  <div class="hero-band">
+    <span class="hero-bg-text">AUTISMO</span>
+    <div class="hero-text">
+      <h2>Comprendiendo el Autismo</h2>
+      <p>Celebrando la neurodiversidad y promoviendo un mundo más inclusivo y empático</p>
     </div>
+  </div>
 
-    <footer>
-        <p>Este sitio web tiene fines informativos y de concienciación.</p>
-        <p>&copy; 2026 - Promoviendo la Neurodiversidad</p>
-    </footer>
+  <!-- ¿QUÉ ES? -->
+  <section class="section" id="que-es">
+    <div class="section-label">01 — Fundamentos</div>
+    <div class="section-title">¿Qué es el Espectro Autista?</div>
+    <div class="section-body">
+      <p>El autismo, o Trastorno del Espectro Autista (TEA), es una condición neurológica y de desarrollo que comienza en la niñez y dura toda la vida. Afecta cómo una persona se comporta, interactúa con otros, se comunica y aprende.</p>
+      <p>Se llama "espectro" porque las personas autistas pueden tener una amplia variedad de síntomas y habilidades. Algunas personas autistas pueden necesitar mucha ayuda en su vida diaria, mientras que otras necesitan menos apoyo y viven de forma independiente.</p>
+    </div>
+    <div class="callout">
+      <strong>Lo más importante:</strong> entender el autismo desde la <strong>neurodiversidad</strong>. No es una enfermedad que deba "curarse", sino una forma diferente en la que funciona el cerebro.
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CARACTERÍSTICAS -->
+  <section class="section" id="caracteristicas">
+    <div class="section-label">02 — Características Comunes</div>
+    <div class="section-title">Cómo se Manifiesta</div>
+    <div class="section-body">
+      <p>Las personas autistas presentan una amplia variedad de características. Ninguna experiencia es igual a otra, pero existen patrones comunes que ayudan a comprender el espectro.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">💬</div>
+        <h3>Comunicación e Interacción</h3>
+        <p>Pueden tener formas únicas de comunicarse. Algunos son muy verbales, otros pueden no hablar o usar dispositivos de comunicación. Pueden evitar el contacto visual o interpretar el lenguaje de manera muy literal.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <h3>Patrones de Comportamiento</h3>
+        <p>Es común que prefieran rutinas estructuradas y puedan sentirse abrumados por los cambios inesperados. Pueden tener intereses muy profundos y específicos en ciertos temas.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Sensibilidad Sensorial</h3>
+        <p>Muchas personas en el espectro experimentan el mundo de manera diferente. Pueden ser hipersensibles o hiposensibles a ruidos, luces, texturas o sabores.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MITOS Y REALIDADES -->
+  <section class="section" id="mitos">
+    <div class="section-label">03 — Claridad</div>
+    <div class="section-title">Mitos vs. Realidades</div>
+    <div class="section-body">
+      <p>El autismo está rodeado de conceptos erróneos que afectan la vida de las personas en el espectro. Aquí aclaramos los más comunes con base en evidencia científica.</p>
+    </div>
+    <div class="mitos-list">
+      <div class="mito-item">
+        <div class="mito-col">
+          <span class="mito-tag tag-mito">Mito</span>
+          <p>Las vacunas causan autismo.</p>
+        </div>
+        <div class="mito-col">
+          <span class="mito-tag tag-real">Realidad</span>
+          <p>Falso. Múltiples estudios científicos rigurosos a nivel mundial han demostrado que no existe absolutamente ninguna relación entre las vacunas y el autismo.</p>
+        </div>
+      </div>
+      <div class="mito-item">
+        <div class="mito-col">
+          <span class="mito-tag tag-mito">Mito</span>
+          <p>Las personas autistas no tienen empatía.</p>
+        </div>
+        <div class="mito-col">
+          <span class="mito-tag tag-real">Realidad</span>
+          <p>Las personas autistas sienten mucha empatía, a menudo incluso más de lo normal. Simplemente pueden expresarla o procesarla de una manera diferente a las personas neurotípicas.</p>
+        </div>
+      </div>
+      <div class="mito-item">
+        <div class="mito-col">
+          <span class="mito-tag tag-mito">Mito</span>
+          <p>Todos los autistas tienen talentos de "genio".</p>
+        </div>
+        <div class="mito-col">
+          <span class="mito-tag tag-real">Realidad</span>
+          <p>Aunque algunos tienen habilidades excepcionales (síndrome del sabio), la mayoría tiene fortalezas y debilidades variadas, exactamente igual que el resto de la población.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- APOYO -->
+  <section class="section" id="apoyo">
+    <div class="section-label">04 — Recursos</div>
+    <div class="section-title">Recursos y Apoyo</div>
+    <div class="section-body">
+      <p>El diagnóstico temprano y las terapias adaptadas —como terapia ocupacional o de lenguaje— pueden ser de gran ayuda. Es vital escuchar a los adultos autistas para entender realmente sus necesidades.</p>
+      <p>Si buscas más información, te recomendamos acercarte a asociaciones locales de tu país o leer recursos de organizaciones lideradas por personas autistas, como ASAN.</p>
+    </div>
+    <div class="apoyo-box">
+      <h3>¿Buscas Orientación?</h3>
+      <p>Este sitio tiene fines informativos y de concienciación. Para apoyo profesional, contacta a asociaciones locales especializadas en TEA o consulta con un profesional de salud. La información y el acompañamiento adecuado marcan una gran diferencia en la vida de las personas en el espectro y sus familias.</p>
+      <a href="https://autisticadvocacy.org" target="_blank" class="btn-apoyo">Conocer ASAN →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>UTP — Proyecto 5GS201</span>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    sections.forEach(s => observer.observe(s));
+  </script>
 
 </body>
 </html>
